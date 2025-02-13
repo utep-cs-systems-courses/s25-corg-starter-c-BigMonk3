@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "draw.h"
 
 /* Prints a size x size square whose left col is at startCol */
@@ -26,3 +27,15 @@ void print_triangle(int leftCol, int size)
   }
 }
 
+// Prints an arrow with specified stem length (stemSize) starting from leftCol.
+void print_arrow(int leftCol, int stemSize) 
+{
+  int row, col;
+  for (row = 0; row <= 7; row++) {
+    char x = (row <= 2 || row > 5) ? ' ' : '*';
+    for (int i = 0; i < leftCol; i++) putchar(' ');
+    for (col = 0; col <= stemSize; col++) putchar(x);
+    for (int i = 0; i < abs(4 * (row / 4) - row % 4); i++) putchar('*');
+    putchar('\n');
+  }
+}
